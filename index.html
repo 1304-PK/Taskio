@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <section id="side-bar">
+        <div id="user-info">
+            <img src="assets/user-logo.svg" alt="">
+            <span>Username</span>
+        </div>
+
+        <div id="action-container">
+            <button class="action-button" id="add-project">
+                <span>Add Project</span>
+            </button>
+            <button class="action-button">
+                Today
+            </button>
+            <button class="action-button">
+                View Projects
+            </button>
+            <button class="action-button">
+                Search
+            </button>
+        </div>
+
+        <div id="sidebar-projects-container">
+            <h2>My Projects</h2>
+            <div id="sidebar-projects">
+                <button class="project">
+                    <p>Default Project</p>
+                </button>
+            </div>
+        </div>
+
+        </div>
+    </section>
+
+    <div id="main-container">
+        <h1>Default Project</h1>
+
+        <div class="task-section">
+            <p class="task-heading">
+                Tasks
+            </p>
+
+            <div class="task">
+
+                <div class="task-details">
+
+                    <div class="task-name">
+                        <input type="radio">
+                        <span>Task 1</span>
+                    </div>
+                    <div class="date-time">
+                        12th December 7:00PM
+                    </div>
+                </div>
+            </div>
+
+            <div class="task">
+
+                <div class="task-details">
+
+                    <div class="task-name">
+                        <input type="radio">
+                        Task 2
+                    </div>
+                    <div class="date-time">
+                        7th April 11:00AM
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <button id="add-task">
+
+        <img src="assets/user-logo.svg" alt="">
+
+    </button>
+
+    <dialog id="project-dialog">
+        <h1>Add Project</h1>
+        <form id="project-form">
+            <label for="project-input">Project Name</label>
+            <input type="text" id="project-input" placeholder="My Project">
+            <button id="project-dialog-close">
+                ADD
+            </button>
+        </form>
+    </dialog>   
+
+    <dialog id="task-dialog">
+        <h1>Add Task</h1>
+        <form id="task-form">
+            <div>
+            <label for="project-options">Select the Project</label>
+            <select id="project-options">
+            </select>
+        </div>
+        <div>
+            <label for="task-input">Task Name</label>
+            <input type="text" id="task-input" placeholder="My Task">
+        </div>
+            <button id="task-dialog-close">
+                ADD
+            </button>
+        </form>
+    </dialog>
+    <script src="script.js"></script>
+</body>
+
+</html>
