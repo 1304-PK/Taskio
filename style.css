@@ -7,8 +7,8 @@
 
 body {
     display: flex;
-    height: 100vmin;
     font-family: 'Inter';
+    min-height: 100vh;
 }
 
 span {
@@ -22,6 +22,7 @@ button {
 }
 
 #side-bar {
+    position: relative;
     background-color: #A18AFF;
     width: 35vmin;
     padding-top: 2.5vmin;
@@ -60,10 +61,10 @@ button {
     padding: 0.5vmin 0vmin;
     border-radius: 8px;
     transition: background-color 250ms;
-    
-    &:hover{
+
+    &:hover {
         background-color: #cdb4db;
-    }    
+    }
 }
 
 .action img {
@@ -98,10 +99,10 @@ button {
     padding: 0.5vmin 0vmin;
     border-radius: 8px;
     transition: background-color 250ms;
-    
-    &:hover{
+
+    &:hover {
         background-color: #cdb4db;
-    } 
+    }
 }
 
 .project img {
@@ -191,33 +192,30 @@ button {
 
 /* DIALOG */
 
-#project-dialog{
+#project-dialog {
     border-radius: 10px;
     padding: 2vmin;
-    margin-left: 50vmax;
-    margin-top: 50vmin;
-    transform: translate(-50%, -50%)
-
+    margin: auto;
 }
 
-#project-form{
+#project-form {
     display: flex;
     margin-top: 3vmin;
 }
 
-#project-form label{
+#project-form label {
     font-size: 1.3rem;
     display: flex;
     align-items: center;
     margin-right: 1vmin;
 }
 
-#project-form input{
+#project-form input {
     font-size: 1.1rem;
     padding: 0.4vmin 1vmin;
 }
 
-#project-form button{
+#project-form button {
     background-color: lightgreen;
     font-size: 1.2rem;
     font-weight: bold;
@@ -228,16 +226,13 @@ button {
 
 /* TASK DIALOG */
 
-#task-dialog{
+#task-dialog {
     border-radius: 10px;
     padding: 2vmin;
-    margin-left: 50vmax;
-    margin-top: 50vmin;
-    transform: translate(-50%, -50%)
-
+    margin: auto;
 }
 
-#task-form{
+#task-form {
     margin-top: 4vmin;
     display: flex;
     flex-direction: column;
@@ -246,17 +241,17 @@ button {
     align-items: flex-start;
 }
 
-#task-form select{
+#task-form select {
     font-size: 1.1rem;
     padding: 0.3vmin 1vmin;
 }
 
-#task-form input{
+#task-form input {
     font-size: 1.1rem;
     padding: 0.4vmin 1vmin;
 }
 
-#task-form button{
+#task-form button {
     border-radius: 5px;
     background-color: lightgreen;
     font-size: 1.2rem;
@@ -264,4 +259,33 @@ button {
     padding: 1vmin 1vmin;
     margin-top: 3vmin;
     align-self: center;
+}
+
+#toggle-sidebar {
+    font-size: 2rem;
+    position: absolute;
+    right: -25px;
+    top: 1vmin;
+    display: none;
+}
+
+.checked {
+    background-color: lightgray;
+    text-decoration: line-through;
+}
+
+@media (max-width: 900px) {
+
+    #toggle-sidebar {
+        font-size: 1rem;
+        display: block;
+    }
+
+    #side-bar {
+        box-sizing: border-box;
+        position: fixed;
+        min-height: 100vh;
+        min-width: 60vw;
+        transform: translateX(-60vw)
+    }
 }
