@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-
-    <title>Document</title>
+    <script src="https://kit.fontawesome.com/5f2fbf2acd.js" crossorigin="anonymous"></script>
+    <title>To-Do List</title>
 </head>
 
 <body>
     <section id="side-bar">
+        <button id="toggle-sidebar">
+            <i class="fa-solid fa-bars"></i>
+        </button>
         <div id="user-info">
             <img src="assets/user-logo.svg" alt="">
             <span>Username</span>
@@ -33,19 +36,14 @@
 
         <div id="sidebar-projects-container">
             <h2>My Projects</h2>
-            <div id="sidebar-projects">
-                <button class="project">
-                    <p>Default Project</p>
-                </button>
-            </div>
-        </div>
+            <div id="sidebar-projects"></div>
         </div>
     </section>
 
     <div id="main-container"></div>
 
     <button id="add-task">
-        <img src="assets/user-logo.svg" alt="">
+        <i class="fa-solid fa-plus"></i>
     </button>
 
     <dialog id="project-dialog">
