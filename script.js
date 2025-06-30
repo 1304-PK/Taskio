@@ -30,7 +30,6 @@ function init() {
 }
 
 function updateTaskDialog() {
-
     selectTag.innerHTML = ''
     projects.forEach((project) => {
         const option = document.createElement('option')
@@ -42,17 +41,27 @@ function updateTaskDialog() {
 function updateSidebarProjects() {
     const projContainer = document.getElementById('sidebar-projects')
     projContainer.innerHTML = ''
-    projects.forEach((project) => {
+    projects.forEach((project, index) => {
         const btn = document.createElement('button')
         btn.className = 'project'
         const p = document.createElement('p')
         p.textContent = project.name
-        btn.append(p)
+        const delProjBtn = document.createElement('button')
+        delProjBtn.className = 'delete-proj-button'
+        delProjBtn.innerHTML = '<i class="fa-solid fa-trash"></i>'
+
+        delProjBtn.addEventListener('click', (e) => {
+            e.stopPropagation()
+            projects.splice(index, 1)
+            renderMainContainer(projects[0])
+            updateSidebarProjects()
+        })
+
+        btn.append(p, delProjBtn)
 
         btn.addEventListener('click', () => {
             renderMainContainer(project)
         })
-
         projContainer.append(btn)
     })
 }
@@ -87,18 +96,12 @@ function renderMainContainer(project) {
             if (input.checked === true) {
                 tasks.classList.add('checked')
             }
-            else {
-                tasks.classList.remove('checked')
-            }
-
+            else {tasks.classList.remove('checked')}
         })
 
         const span = document.createElement('span')
         span.textContent = task
         taskName.append(input, span)
-
-        // const dateTime = document.createElement('div')
-        // dateTime.textContent = 'DATE AND TIME'
 
         taskDetails.append(taskName)
         tasks.append(taskDetails)
@@ -118,12 +121,14 @@ addProjBtn.addEventListener('click', () => {
 document.getElementById('project-dialog-add-button').addEventListener('click', (e) => {
     e.preventDefault()
 
+    if (projInput.value){
     const proj = new createProject(projInput.value)
     projects.push(proj)
     updateSidebarProjects()
     renderMainContainer(proj)
-
     projDialog.close()
+    }
+    else{alert('Project name cannot be empty')}
 })
 
 // TASK DIALOG
@@ -136,18 +141,19 @@ addTaskBtn.addEventListener('click', () => {
 document.getElementById('task-dialog-add-button').addEventListener('click', (e) => {
     e.preventDefault()
 
-    projects.forEach((project) => {
-        if (project.name === selectTag.value) {
-            project.tasks.push(taskInput.value)
-            renderMainContainer(project)
-        }
-    })
-
-    taskDialog.close()
+    if (taskInput.value) {
+        projects.forEach((project) => {
+            if (project.name === selectTag.value) {
+                project.tasks.push(taskInput.value)
+                renderMainContainer(project)
+            }
+        })
+        taskDialog.close()
+    }
+    else{alert('Task name cannot be empty')}
 })
 
 let toggled = false
-
 toggleSidebar.addEventListener('click', () => {
     if (toggled === false) {
         sideBar.style.transform = 'translateX(0)'
