@@ -23,7 +23,8 @@ button {
 
 #side-bar {
     position: relative;
-    background-color: #A18AFF;
+    /* background-color: #A18AFF; */
+    background-color: #719191;
     width: 35vmin;
     padding-top: 2.5vmin;
     padding-left: 2vmin;
@@ -45,7 +46,8 @@ button {
 }
 
 #action-container {
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
+    background-color: #EAF1F1;
     border-radius: 8px;
     padding: 2vmin;
     display: flex;
@@ -63,17 +65,12 @@ button {
     transition: background-color 250ms;
 
     &:hover {
-        background-color: #cdb4db;
+        background-color: #546a7b;
     }
 }
 
-.action img {
-    width: 3vmin;
-}
-
-
 #sidebar-projects-container {
-    background-color: #ffffff;
+    background-color: #EAF1F1;
     padding: 2vmin;
     border-radius: 8px;
     display: flex;
@@ -106,7 +103,7 @@ button {
     }
 }
 
-.delete-proj-button{
+.delete-proj-button {
     background-color: red;
     color: white;
     font-size: 1.2rem;
@@ -116,7 +113,8 @@ button {
 }
 
 #main-container {
-    background-color: #edede9;
+    /* background-color: #edede9; */
+    background-color: #FAFAFA;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -169,6 +167,10 @@ button {
     font-weight: bold
 }
 
+.task-name input{
+    cursor: pointer;
+}
+
 .date-time {
     padding-left: 2.6vmin;
 }
@@ -180,7 +182,7 @@ button {
 
 #add-task {
     font-size: 2rem;
-    /* background-color: lightpink; */
+    border: 2px solid black;
     height: 8vmin;
     width: 8vmin;
     border-radius: 50%;
@@ -190,10 +192,6 @@ button {
     position: absolute;
     bottom: 5vmin;
     right: 6vmin;
-}
-
-#add-task img {
-    width: 4vmin;
 }
 
 /* DIALOG */
