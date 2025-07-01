@@ -185,14 +185,31 @@ button {
 /* DIALOG */
 
 #project-dialog {
+    background-color: rgb(238, 238, 238);
+    border: 2px solid black;
     border-radius: 10px;
     padding: 2vmin;
     margin: auto;
+
+    &::backdrop{
+        background-color: rgba(0, 0, 0, 0.825);
+    }
 }
 
 #project-form {
     display: flex;
+    flex-direction: column;
     margin-top: 3vmin;
+}
+
+#project-form div{
+    display: flex;
+}
+
+#project-dialog-buttons{
+    margin-top: 6vmin;
+    justify-content: center;
+    gap: 8vmin;
 }
 
 #project-form label {
@@ -208,20 +225,34 @@ button {
 }
 
 #project-form button {
-    background-color: lightgreen;
     font-size: 1.2rem;
     font-weight: bold;
-    padding: 0vmin 1.5vmin;
-    margin-left: 9vmin;
-    border-radius: 5px;
+    padding: 1vmin 1.5vmin;
+}
+
+#project-dialog-add-button{
+    background-color: black;
+    color: white;
+    border-radius: 50px;
+    border: 2px solid black;
+}
+
+#project-dialog-close-button{
+    border: 2px solid black;
+    border-radius: 50px;
 }
 
 /* TASK DIALOG */
 
 #task-dialog {
+    background-color: rgb(238, 238, 238);
     border-radius: 10px;
     padding: 2vmin;
     margin: auto;
+
+    &::backdrop{
+        background-color: rgba(0, 0, 0, 0.825);
+    }
 }
 
 #task-form {
@@ -230,7 +261,6 @@ button {
     flex-direction: column;
     font-size: 1.3rem;
     gap: 2.5vmin;
-    align-items: flex-start;
 }
 
 #task-form select {
@@ -243,14 +273,28 @@ button {
     padding: 0.4vmin 1vmin;
 }
 
+#task-dialog-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 8vmin;
+    margin-top: 4vmin;
+}
+
 #task-form button {
-    border-radius: 5px;
-    background-color: lightgreen;
+    border-radius: 50px;
     font-size: 1.2rem;
     font-weight: bold;
-    padding: 1vmin 1vmin;
-    margin-top: 3vmin;
-    align-self: center;
+    padding: 1vmin 1.5vmin;
+}
+
+#task-dialog-add-button{
+    background-color: black;
+    color: white;
+    border: 2px solid black
+}
+
+#task-dialog-close-button{
+    border: 2px solid black;
 }
 
 #toggle-sidebar {
