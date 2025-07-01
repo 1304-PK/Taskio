@@ -84,6 +84,20 @@ function renderMainContainer(project) {
         const tasks = document.createElement("div")
         tasks.className = 'task'
 
+        const taskBtns = document.createElement('div')
+        taskBtns.id = 'task-buttons-div'
+        const infoBtn = document.createElement('button')
+        infoBtn.id = 'task-info-button'
+        infoBtn.innerHTML = '<i class="fa-solid fa-info"></i>'
+        const editBtn = document.createElement('button')
+        editBtn.id = 'task-edit-button'
+        editBtn.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>'
+        const deleteBtn = document.createElement('button')
+        deleteBtn.id = 'task-delete-button'
+        deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>'
+
+        taskBtns.append(infoBtn, editBtn, deleteBtn)
+
         const taskDetails = document.createElement('div')
         taskDetails.className = 'task-details'
         const taskName = document.createElement('div')
@@ -104,7 +118,7 @@ function renderMainContainer(project) {
         taskName.append(input, span)
 
         taskDetails.append(taskName)
-        tasks.append(taskDetails)
+        tasks.append(taskDetails, taskBtns)
 
         taskSection.append(tasks)
     })
