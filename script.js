@@ -131,6 +131,11 @@ document.getElementById('project-dialog-add-button').addEventListener('click', (
     else{alert('Project name cannot be empty')}
 })
 
+document.getElementById('project-dialog-close-button').addEventListener('click', (e) => {
+    e.preventDefault()
+    projDialog.close()
+})
+
 // TASK DIALOG
 
 addTaskBtn.addEventListener('click', () => {
@@ -151,6 +156,11 @@ document.getElementById('task-dialog-add-button').addEventListener('click', (e) 
         taskDialog.close()
     }
     else{alert('Task name cannot be empty')}
+})
+
+document.getElementById('task-dialog-close-button').addEventListener('click', (e) => {
+    e.preventDefault()
+    taskDialog.close()
 })
 
 let toggled = false
