@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/5f2fbf2acd.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="assets/web-icon.png">
     <title>To-Do List</title>
 </head>
 
@@ -46,11 +47,14 @@
     <dialog id="project-dialog">
         <h1>Add Project</h1>
         <form id="project-form">
+            <div>
             <label for="project-input">Project Name</label>
             <input type="text" id="project-name-input" placeholder="My Project">
-            <button id="project-dialog-add-button">
-                ADD
-            </button>
+        </div>
+        <div id="project-dialog-buttons">
+            <button id="project-dialog-close-button">Cancel</button>
+            <button id="project-dialog-add-button">Add</button>
+        </div>
         </form>
     </dialog>
 
@@ -67,9 +71,10 @@
                 <label for="task-input">Task Name</label>
                 <input type="text" id="task-name-input" placeholder="My Task">
             </div>
-            <button id="task-dialog-add-button">
-                ADD
-            </button>
+            <div id="task-dialog-buttons">
+            <button id="task-dialog-close-button">Cancel</button>
+            <button id="task-dialog-add-button">Add</button>
+        </div>
         </form>
     </dialog>
     <script src="script.js"></script>
