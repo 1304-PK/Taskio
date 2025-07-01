@@ -142,6 +142,7 @@ button {
 .task {
     /* background-color: lightseagreen; */
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding-top: 1.8vmin;
     padding-bottom: 1.8vmin;
@@ -149,9 +150,7 @@ button {
 }
 
 .task-details {
-    /* background-color: white; */
     padding-left: 0.5vmin;
-
 }
 
 .task-name {
@@ -166,6 +165,32 @@ button {
 
 .date-time {
     padding-left: 2.6vmin;
+}
+
+#task-buttons-div{
+    display: flex;
+    gap: 0.8vmin;
+}
+
+#task-buttons-div button{
+    font-size: 1.4rem;
+    width: 3vmin;
+    height: 3vmin;
+    border-radius: 5px;
+}
+
+#task-info-button{
+    color: white;
+    background-color: rgb(104, 104, 104);
+}
+
+#task-edit-button{
+    background-color: #ffb703;
+}
+
+#task-delete-button{
+    background-color: red;
+    color: white;
 }
 
 #add-task {
