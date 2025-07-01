@@ -126,6 +126,7 @@ document.getElementById('project-dialog-add-button').addEventListener('click', (
     projects.push(proj)
     updateSidebarProjects()
     renderMainContainer(proj)
+    projInput.value = ''
     projDialog.close()
     }
     else{alert('Project name cannot be empty')}
@@ -133,6 +134,7 @@ document.getElementById('project-dialog-add-button').addEventListener('click', (
 
 document.getElementById('project-dialog-close-button').addEventListener('click', (e) => {
     e.preventDefault()
+    projInput.value = ''
     projDialog.close()
 })
 
@@ -153,6 +155,7 @@ document.getElementById('task-dialog-add-button').addEventListener('click', (e) 
                 renderMainContainer(project)
             }
         })
+        taskInput.value = ''
         taskDialog.close()
     }
     else{alert('Task name cannot be empty')}
@@ -160,6 +163,7 @@ document.getElementById('task-dialog-add-button').addEventListener('click', (e) 
 
 document.getElementById('task-dialog-close-button').addEventListener('click', (e) => {
     e.preventDefault()
+    taskInput.value = ''
     taskDialog.close()
 })
 
