@@ -14,17 +14,20 @@ const addProjBtn = document.getElementById('add-project')
 const addTaskBtn = document.getElementById('add-task')
 const projDialog = document.getElementById('project-dialog')
 const taskDialog = document.getElementById('task-dialog')
+const editTaskDialog = document.getElementById('edit-task-dialog')
 const projInput = document.getElementById('project-name-input')
 const taskInput = document.getElementById('task-name-input')
 const selectTag = document.getElementById('project-options')
+const taskDate = document.getElementById('task-date')
+const editTaskName = document.getElementById('edit-task-input')
 const toggleSidebar = document.getElementById('toggle-sidebar')
 const sideBar = document.getElementById('side-bar')
 
 function init() {
     const initialProj = new createProject('Default Project')
     projects.push(initialProj)
-    initialProj.tasks.push('Task 1')
-    initialProj.tasks.push('Task 2')
+    initialProj.tasks.push({name: 'Task 1', date: '12/04/2025'})
+    initialProj.tasks.push({name: 'Task 2', date: '13/04/2025'})
     updateSidebarProjects()
     renderMainContainer(initialProj)
 }
@@ -80,7 +83,7 @@ function renderMainContainer(project) {
     taskHeading.textContent = 'Tasks'
     taskSection.append(taskHeading)
 
-    project.tasks.forEach((task) => {
+    project.tasks.forEach((task, index) => {
         const tasks = document.createElement("div")
         tasks.className = 'task'
 
@@ -88,13 +91,31 @@ function renderMainContainer(project) {
         taskBtns.id = 'task-buttons-div'
         const infoBtn = document.createElement('button')
         infoBtn.id = 'task-info-button'
+
+
+
         infoBtn.innerHTML = '<i class="fa-solid fa-info"></i>'
         const editBtn = document.createElement('button')
         editBtn.id = 'task-edit-button'
         editBtn.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>'
+
+        // editBtn.addEventListener('click', () => {
+        //     editTaskDialog.showModal()
+        // })
+
+        // document.getElementById('edit-task-submit-button').addEventListener('click', (e) => {
+        //     e.preventDefault()
+        //     console.log(index)
+        // })
+
         const deleteBtn = document.createElement('button')
         deleteBtn.id = 'task-delete-button'
         deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>'
+
+        deleteBtn.addEventListener('click', () => {
+            project.tasks.splice(index, 1)
+            renderMainContainer(project)
+        })
 
         taskBtns.append(infoBtn, editBtn, deleteBtn)
 
@@ -114,10 +135,13 @@ function renderMainContainer(project) {
         })
 
         const span = document.createElement('span')
-        span.textContent = task
+        span.textContent = task.name
         taskName.append(input, span)
 
-        taskDetails.append(taskName)
+        const taskDateDiv = document.createElement('div')
+        taskDateDiv.textContent = task.date
+
+        taskDetails.append(taskName, taskDateDiv)
         tasks.append(taskDetails, taskBtns)
 
         taskSection.append(tasks)
@@ -163,9 +187,14 @@ document.getElementById('task-dialog-add-button').addEventListener('click', (e) 
     e.preventDefault()
 
     if (taskInput.value) {
+        let date = taskDate.value.split('-')
+        date = `${date[2]}/${date[1]}/${date[0]}`
         projects.forEach((project) => {
             if (project.name === selectTag.value) {
-                project.tasks.push(taskInput.value)
+                project.tasks.push({
+                    name: taskInput.value,
+                    date: date
+                })
                 renderMainContainer(project)
             }
         })
