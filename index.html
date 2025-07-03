@@ -61,20 +61,35 @@
     <dialog id="task-dialog">
         <h1>Add Task</h1>
         <form id="task-form">
-            <div>
-                <label for="project-options">Select the Project
-                </label>
-                <select id="project-options">
-                </select>
-            </div>
-            <div>
-                <label for="task-input">Task Name</label>
-                <input type="text" id="task-name-input" placeholder="My Task">
-            </div>
+            <table>
+                <tr>
+                    <th>Project</th>
+                    <td>
+                        <select id="project-options"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Task Name</th>
+                    <td><input type="text" id="task-name-input" placeholder="My Task"></td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td><input type="date" id="task-date"></td>
+                </tr>
+            </table>
             <div id="task-dialog-buttons">
-            <button id="task-dialog-close-button">Cancel</button>
-            <button id="task-dialog-add-button">Add</button>
-        </div>
+                <button id="task-dialog-close-button">Cancel</button>
+                <button id="task-dialog-add-button">Add</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="edit-task-dialog">
+        <h1>Edit Task</h1>
+        <form>
+            <label for="edit-task-input">New Name</label>
+            <input type="text" id="edit-task-input">
+            <button id="edit-task-submit-button">Submit</button>
         </form>
     </dialog>
     <script src="script.js"></script>
