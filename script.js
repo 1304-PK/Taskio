@@ -15,6 +15,7 @@ const addTaskBtn = document.getElementById('add-task')
 const projDialog = document.getElementById('project-dialog')
 const taskDialog = document.getElementById('task-dialog')
 const editTaskDialog = document.getElementById('edit-task-dialog')
+const taskInfoDialog = document.getElementById('task-info-dialog')
 const projInput = document.getElementById('project-name-input')
 const taskInput = document.getElementById('task-name-input')
 const selectTag = document.getElementById('project-options')
@@ -39,6 +40,12 @@ function updateTaskDialog() {
         option.textContent = project.name
         selectTag.append(option)
     })
+}
+
+function getTaskInfo(project, task){
+    document.getElementById('task-info-project').textContent = `Project: ${project.name}`
+    document.getElementById('task-info-task-name').textContent = `Task Name: ${task.name}`
+    document.getElementById('task-info-date').textContent = `Due Date: ${task.date}`
 }
 
 function updateSidebarProjects() {
@@ -92,21 +99,20 @@ function renderMainContainer(project) {
         const infoBtn = document.createElement('button')
         infoBtn.id = 'task-info-button'
 
+        infoBtn.addEventListener('click', () => {
+            getTaskInfo(project, task)
+            taskInfoDialog.showModal()
+        })
 
+        document.getElementById('close-task-info').addEventListener('click', (e) => {
+            e.preventDefault()
+            taskInfoDialog.close()
+        })
 
         infoBtn.innerHTML = '<i class="fa-solid fa-info"></i>'
         const editBtn = document.createElement('button')
         editBtn.id = 'task-edit-button'
         editBtn.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>'
-
-        // editBtn.addEventListener('click', () => {
-        //     editTaskDialog.showModal()
-        // })
-
-        // document.getElementById('edit-task-submit-button').addEventListener('click', (e) => {
-        //     e.preventDefault()
-        //     console.log(index)
-        // })
 
         const deleteBtn = document.createElement('button')
         deleteBtn.id = 'task-delete-button'
