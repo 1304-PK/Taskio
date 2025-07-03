@@ -46,10 +46,9 @@ button {
 }
 
 #action-container {
-    /* background-color: #ffffff; */
     background-color: #EAF1F1;
     border-radius: 8px;
-    padding: 2vmin;
+    padding: 2vmin 1.5vmin;
     display: flex;
     flex-direction: column;
     gap: 0.1vmin;
@@ -60,12 +59,12 @@ button {
     align-items: center;
     font-size: 1.2rem;
     font-weight: bold;
-    padding: 0.5vmin 0vmin;
+    padding: 0.5vmin 0.5vmin;
     border-radius: 8px;
     transition: background-color 250ms;
 
     &:hover {
-        background-color: #546a7b;
+        background-color: #cbcdcd;
     }
 }
 
@@ -99,7 +98,7 @@ button {
     transition: background-color 250ms;
 
     &:hover {
-        background-color: #cdb4db;
+        background-color: #cbcdcd;
     }
 }
 
@@ -173,9 +172,8 @@ button {
 }
 
 #task-buttons-div button{
-    font-size: 1.4rem;
+    font-size: clamp(1rem, 3vw, 1.4rem);
     width: 3vmin;
-    height: 3vmin;
     border-radius: 5px;
 }
 
@@ -288,6 +286,19 @@ button {
     gap: 2.5vmin;
 }
 
+#task-date{
+    max-width: fit-content
+}
+
+table th{
+    text-align: start;
+    padding-right: 1vmin;
+}
+
+th, td{
+    padding-bottom: 1vmin;
+}
+
 #task-form select {
     font-size: 1.1rem;
     padding: 0.3vmin 1vmin;
@@ -335,6 +346,10 @@ button {
     text-decoration: line-through;
 }
 
+#edit-task-dialog{
+    margin: auto;
+}
+
 @media (max-width: 900px) {
 
     #toggle-sidebar {
@@ -349,5 +364,9 @@ button {
         min-width: 60vw;
         transform: translateX(-60vw);
         transition: transform 300ms;
+    }
+
+    #task-buttons-div button{
+        width: 4.5vmin;
     }
 }
