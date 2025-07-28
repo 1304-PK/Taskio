@@ -1,108 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/5f2fbf2acd.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="assets/web-icon.png">
-    <title>To-Do List</title>
-</head>
-
-<body>
-    <section id="side-bar">
-        <button id="toggle-sidebar">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-        <div id="user-info">
-            <img src="assets/user-logo.svg" alt="">
-            <span>Username</span>
-        </div>
-
-        <div id="action-container">
-            <button class="action-button" id="add-project">
-                <span><i class="fa-solid fa-plus" style="margin-right: 0.5vmin"></i>Add Project</span>
-            </button>
-            <button class="action-button">
-                <i class="fa-regular fa-calendar" style="margin-right: 0.5vmin"></i>Today
-            </button>
-            <button class="action-button">
-                <i class="fa-solid fa-magnifying-glass" style="margin-right: 0.5vmin"></i>Search
-            </button>
-        </div>
-
-        <div id="sidebar-projects-container">
-            <h2>My Projects</h2>
-            <div id="sidebar-projects"></div>
-        </div>
-    </section>
-
-    <div id="main-container"></div>
-
-    <button id="add-task">
-        <i class="fa-solid fa-plus"></i>
-    </button>
-
-    <dialog id="project-dialog">
-        <h1>Add Project</h1>
-        <form id="project-form">
-            <div>
-            <label for="project-input">Project Name</label>
-            <input type="text" id="project-name-input" placeholder="My Project">
-        </div>
-        <div id="project-dialog-buttons">
-            <button id="project-dialog-close-button">Cancel</button>
-            <button id="project-dialog-add-button">Add</button>
-        </div>
-        </form>
-    </dialog>
-
-    <dialog id="task-dialog">
-        <h1>Add Task</h1>
-        <form id="task-form">
-            <table>
-                <tr>
-                    <th>Project</th>
-                    <td>
-                        <select id="project-options"></select>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Task Name</th>
-                    <td><input type="text" id="task-name-input" placeholder="My Task"></td>
-                </tr>
-                <tr>
-                    <th>Date</th>
-                    <td><input type="date" id="task-date"></td>
-                </tr>
-            </table>
-            <div id="task-dialog-buttons">
-                <button id="task-dialog-close-button">Cancel</button>
-                <button id="task-dialog-add-button">Add</button>
-            </div>
-        </form>
-    </dialog>
-
-    <dialog id="edit-task-dialog">
-        <h1>Edit Task</h1>
-        <form>
-            <label for="edit-task-input">New Name</label>
-            <input type="text" id="edit-task-input">
-            <button id="edit-task-submit-button">Submit</button>
-        </form>
-    </dialog>
-
-    <dialog id="task-info-dialog">
-        <h1>Task Info</h1>
-        <form>
-            <p id="task-info-project"></p>
-            <p id="task-info-task-name"></p>
-            <p id="task-info-date"></p>
-        </form>
-        <button id="close-task-info">Close</button>
-    </dialog>
-    <script src="script.js"></script>
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
