@@ -79,7 +79,7 @@
 #input-label-div{
     display: flex;
     flex-direction: column;
-    color: rgba(255, 255, 255, 0.562);
+    color: var(--graycolor);
 }
 
 #input-label-div input{
@@ -95,10 +95,10 @@
     }
 }
 
-#buttons-div{
+#projectform-buttons-div{
     margin-top: 5vmin;
     display: flex;
     /* gap: 5vmin; */
     justify-content: space-between;
-    padding: 0vmin 3vmin;
+    padding: 0vmin 6vmin;
 }
