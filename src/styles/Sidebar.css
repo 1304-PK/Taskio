@@ -58,3 +58,47 @@
         color: #3a3b3c;
     }
 }
+
+#project-dialog{
+    background-color: rgb(42, 42, 42);
+    margin: auto;
+    padding: 3vmin;
+    border-radius: 10px;
+    border: none;
+
+    &::backdrop{
+        background-color: rgba(0, 0, 0, 0.648);
+    }
+}
+
+#project-dialog h1{
+    color: var(--blue);
+    margin-bottom: 3vmin;
+}
+
+#input-label-div{
+    display: flex;
+    flex-direction: column;
+    color: rgba(255, 255, 255, 0.562);
+}
+
+#input-label-div input{
+    font-size: 1rem;
+    padding: 1vmin;
+    width: 50vmin;
+    border-radius: 5px;
+    border: none;
+    margin-top: 0.5vmin;
+
+    &:focus{
+        outline: none;
+    }
+}
+
+#buttons-div{
+    margin-top: 5vmin;
+    display: flex;
+    /* gap: 5vmin; */
+    justify-content: space-between;
+    padding: 0vmin 3vmin;
+}
