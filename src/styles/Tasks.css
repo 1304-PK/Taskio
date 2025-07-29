@@ -1,0 +1,35 @@
+#main-div{
+    background-color: rgb(59, 59, 59);
+    flex: 1;
+    color: white;
+    padding: 3vmin 2vmin;
+}
+
+#task-section{
+    margin-top: 5vmin;
+}
+
+#tasks{
+    margin-top: 1.5vmin;
+}
+
+#tasks:last-child{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.736);
+}
+
+.task{
+    display: flex;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.736);
+    padding: 1vmin 0vmin;
+}
+
+.task p{
+    font-size: 1.1rem;
+}
+
+#add-task{
+    position: absolute;
+    bottom: 5vmin;
+    right: 5vmin;
+}
