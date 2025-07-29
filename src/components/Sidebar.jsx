@@ -66,7 +66,7 @@ function Sidebar({ projects, updateProjects, setCurrentProject }) {
                         <label htmlFor="project-name">Project Name</label>
                         <input type="text" ref={input} id="project-name" placeholder='Title...' />
                     </div>
-                    <div id="buttons-div">
+                    <div id="projectform-buttons-div">
                         <Button variant="outlined" color="error" onClick={(e) => { closeDialog(e) }}>Cancel</Button>
                         <Button variant="contained" onClick={(e) => { addProject(e) }}>Add</Button>
                     </div>
