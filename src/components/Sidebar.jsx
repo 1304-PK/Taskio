@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
+import Button from "@mui/material/Button"
 import "../styles/Sidebar.css"
 
 function Sidebar({ projects, updateProjects, setCurrentProject }) {
@@ -10,6 +11,12 @@ function Sidebar({ projects, updateProjects, setCurrentProject }) {
 
     const showDialog = () => {
         dialog.current.showModal()
+    }
+
+    const closeDialog = (e) => {
+        e.preventDefault()
+        input.current.value = ''
+        dialog.current.close()
     }
 
     const addProject = (e) => {
@@ -27,7 +34,6 @@ function Sidebar({ projects, updateProjects, setCurrentProject }) {
         setCurrentProject(
             projects.find(i => i.name === item.name)
         )
-
     }
 
     return (
@@ -53,14 +59,17 @@ function Sidebar({ projects, updateProjects, setCurrentProject }) {
                 </div>
             </div>
 
-            <dialog ref={dialog}>
+            <dialog ref={dialog} id="project-dialog">
                 <h1>Add Project</h1>
                 <form>
-                    <label htmlFor="project-name">Project Name</label>
-                    <input type="text" ref={input} id="project-name" placeholder='Title' />
-                    <button onClick={(e) => {
-                        addProject(e)
-                    }}>Submit</button>
+                    <div id="input-label-div">
+                        <label htmlFor="project-name">Project Name</label>
+                        <input type="text" ref={input} id="project-name" placeholder='Title...' />
+                    </div>
+                    <div id="buttons-div">
+                        <Button variant="outlined" color="error" onClick={(e) => { closeDialog(e) }}>Cancel</Button>
+                        <Button variant="contained" onClick={(e) => { addProject(e) }}>Add</Button>
+                    </div>
                 </form>
             </dialog>
         </>
