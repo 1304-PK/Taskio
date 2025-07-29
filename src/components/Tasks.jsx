@@ -2,9 +2,16 @@ import React from 'react'
 import { useRef, useState, useEffect } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
+import Checkbox from '@mui/material/Checkbox';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+import Button from "@mui/material/Button"
 import "../styles/Tasks.css"
 
 function Tasks({ projects, updateProjects, currentProject, setCurrentProject }) {
+
+
+  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
   const dialog = useRef(null)
   const input = useRef(null)
@@ -12,6 +19,12 @@ function Tasks({ projects, updateProjects, currentProject, setCurrentProject }) 
 
   const openTaskDialog = () => {
     dialog.current.showModal()
+  }
+
+  const closeTaskDialog = (e) => {
+    e.preventDefault()
+    input.current.value = ''
+    dialog.current.close()
   }
 
   const addTask = (e) => {
@@ -22,7 +35,7 @@ function Tasks({ projects, updateProjects, currentProject, setCurrentProject }) 
           return ({ name: i.name, tasks: [...i.tasks, { name: input.current.value }] })
         }
         else {
-          return {...i}
+          return { ...i }
         }
       })
     )
@@ -36,41 +49,56 @@ function Tasks({ projects, updateProjects, currentProject, setCurrentProject }) 
   return (
     <>
       <div id="main-div">
-        <h1>{currentProject.name}</h1>
+        <h1 id='project-name'>{currentProject.name}</h1>
         <div id="task-section">
           <h2>Tasks</h2>
           <div id="tasks">
             {
               currentProject.tasks && currentProject.tasks.map(item => {
                 return (
-                  <div key={item.name}>
+                  <div key={item.name} className='task'>
+                    <Checkbox {...label} />
                     <p>{item.name}</p>
-                    <input type="checkbox" />
                   </div>
                 )
               })
             }
           </div>
         </div>
-        <div>
-          <button onClick={openTaskDialog}><FontAwesomeIcon icon={faPlus} /></button>
-        </div>
+        <Fab color="primary" aria-label="add" onClick={openTaskDialog} id="add-task">
+          <AddIcon />
+        </Fab>
       </div>
 
-      <dialog ref={dialog}>
+      <dialog ref={dialog} id='task-dialog'>
         <h1>Add Task</h1>
         <form>
-          <input type="text" id="task-name-input" ref={input} />
-          <select name="projects-dropdown" id="projects-dropdown" ref={selectTag}>
-            {
-              projects.map(project => {
-                return (
-                  <option value={project.name} key={project.name}>{project.name}</option>
-                )
-              })
-            }
-          </select>
-          <button onClick={(e) => { addTask(e) }}>Submit</button>
+          <div id="name-input-div">
+            <label htmlFor="task-name-input">Task Name</label>
+            <input type="text" id="task-name-input" ref={input} placeholder='Title...' />
+          </div>
+          <div id='date-project-div'>
+            <div id='form-date-input'>
+              <label htmlFor="task-date-input">Date</label>
+              <input type="date" id='task-date-input' />
+            </div>
+            <div id='form-project-input'>
+              <label htmlFor="projects-dropdown">Project</label>
+              <select name="projects-dropdown" id="projects-dropdown" ref={selectTag}>
+                {
+                  projects.map(project => {
+                    return (
+                      <option value={project.name} key={project.name}>{project.name}</option>
+                    )
+                  })
+                }
+              </select>
+            </div>
+          </div>
+          <div id='taskform-buttons-div'>
+            <Button variant='outlined' color='error' onClick={(e) => { closeTaskDialog(e) }}>Cancel</Button>
+            <Button variant='contained' onClick={(e) => { addTask(e) }}>Add</Button>
+          </div>
         </form>
       </dialog>
     </>
