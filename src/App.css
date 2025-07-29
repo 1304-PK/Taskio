@@ -10,3 +10,8 @@ body{
   display: flex;
   min-height: 100vh;
 }
+
+:root{
+  --blue: #00a6fb;
+  --graycolor: rgba(255, 255, 255, 0.562);
+}
