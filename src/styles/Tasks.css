@@ -24,8 +24,17 @@
     padding: 1vmin 0vmin;
 }
 
-.task p{
+.task :first-child{
     font-size: 1.1rem;
+}
+
+.task-name-date{
+    margin-left: 1vmin;
+}
+
+.task-name-date :last-child{
+    color: rgba(255, 255, 255, 0.673);
+    margin-top: 0.2vmin;
 }
 
 #add-task{
@@ -89,4 +98,38 @@
     justify-content: space-between;
     margin-top: 7vmin;
     padding: 0vmin 6vmin;
+}
+
+#task-date-input {
+    background-color: #646464;
+    border: none;
+    color: white;
+    padding: 1vmin;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#projects-dropdown{
+    background-color: #646464;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 1vmin 1.5vmin;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#form-date-input, #form-project-input{
+    align-items: center;
+}
+
+#empty-projects{
+    background-color: rgb(59, 59, 59);
+    flex: 1;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
