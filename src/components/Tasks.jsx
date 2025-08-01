@@ -10,12 +10,21 @@ import "../styles/Tasks.css"
 
 function Tasks({ projects, updateProjects, currentProject, setCurrentProject }) {
 
-
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
   const dialog = useRef(null)
   const input = useRef(null)
   const selectTag = useRef(null)
+  const date = useRef(null)
+
+  const capitalize = (word) => {
+    return word[0].toUpperCase() + word.slice(1)
+  }
+
+  const dateFormat = (date) => {
+    const v = date.split('-')
+    return v[2] + '-' + v[1] + '-' + v[0]
+  }
 
   const openTaskDialog = () => {
     dialog.current.showModal()
@@ -32,21 +41,24 @@ function Tasks({ projects, updateProjects, currentProject, setCurrentProject }) 
     updateProjects(
       projects.map(i => {
         if (i.name === selectTag.current.value) {
-          return ({ name: i.name, tasks: [...i.tasks, { name: input.current.value }] })
+          return ({ name: i.name, tasks: [...i.tasks, { name: capitalize(input.current.value), date: dateFormat(date.current.value)}] })
         }
         else {
           return { ...i }
         }
       })
     )
+    input.current.value = ''
+    date.current.value = ''
     dialog.current.close()
   }
 
   useEffect(() => {
-    selectTag.current.value && setCurrentProject(projects.find(i => i.name === selectTag.current.value))
+    selectTag.current && selectTag.current.value && setCurrentProject(projects.find(i => i.name === selectTag.current.value))
   }, [projects])
 
   return (
+    currentProject ? 
     <>
       <div id="main-div">
         <h1 id='project-name'>{currentProject.name}</h1>
@@ -58,7 +70,10 @@ function Tasks({ projects, updateProjects, currentProject, setCurrentProject }) 
                 return (
                   <div key={item.name} className='task'>
                     <Checkbox {...label} />
-                    <p>{item.name}</p>
+                    <div className='task-name-date'>
+                      <p>{item.name}</p>
+                      <p>{item.date}</p>
+                    </div>
                   </div>
                 )
               })
@@ -72,15 +87,15 @@ function Tasks({ projects, updateProjects, currentProject, setCurrentProject }) 
 
       <dialog ref={dialog} id='task-dialog'>
         <h1>Add Task</h1>
-        <form>
+        <form onSubmit={(e) => {addTask(e)}}>
           <div id="name-input-div">
             <label htmlFor="task-name-input">Task Name</label>
-            <input type="text" id="task-name-input" ref={input} placeholder='Title...' />
+            <input type="text" id="task-name-input" ref={input} placeholder='Title...' required/>
           </div>
           <div id='date-project-div'>
             <div id='form-date-input'>
               <label htmlFor="task-date-input">Date</label>
-              <input type="date" id='task-date-input' />
+              <input type="date" ref={date} id='task-date-input' required/>
             </div>
             <div id='form-project-input'>
               <label htmlFor="projects-dropdown">Project</label>
@@ -97,11 +112,15 @@ function Tasks({ projects, updateProjects, currentProject, setCurrentProject }) 
           </div>
           <div id='taskform-buttons-div'>
             <Button variant='outlined' color='error' onClick={(e) => { closeTaskDialog(e) }}>Cancel</Button>
-            <Button variant='contained' onClick={(e) => { addTask(e) }}>Add</Button>
+            <Button variant='contained' type='submit'>Add</Button>
           </div>
         </form>
       </dialog>
     </>
+    : <div id="empty-projects">
+      <h1>No Projects Ongoing!</h1>
+      <h1>Click "<AddIcon />" to add one</h1>
+    </div>
   )
 }
 
