@@ -9,11 +9,11 @@ function App() {
   const [currentProject, setCurrentProject] = useState({})
 
   useEffect(() => {
-    updateProjects([{name: "Example Project", tasks: [{name: "Example Task"}]}])
+    updateProjects([{ name: "Example Project", tasks: [{ name: "Example Task", date: '1-08-2025' }] }])
   }, [])
 
   useEffect(() => {
-    if (projects.length === 1){
+    if (projects.length === 1) {
       setCurrentProject(projects[0])
     }
   }, [projects])
