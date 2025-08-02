@@ -3,10 +3,11 @@
 }
 
 #sidebar{
+    position: relative;
     background-color: #242526;
-    color: white;
-    padding: 1vmin 3vmin 1vmin 3vmin;
     width: 260px;
+    color: white;
+    padding: 1vmin 3vmin;
     text-align: center;
 }
 
@@ -117,7 +118,29 @@
 #projectform-buttons-div{
     margin-top: 5vmin;
     display: flex;
-    /* gap: 5vmin; */
     justify-content: space-between;
     padding: 0vmin 6vmin;
+}
+
+#sidebar-icon{
+    display: none;
+    position: absolute;
+    color: white;
+    top: 1vmin;
+    right: -30px;
+}
+
+@media (max-width: 1000px){
+
+    #sidebar-icon{
+        display: block;
+        cursor: pointer;
+    }
+
+    #sidebar{
+        position: fixed;
+        min-height: 100vh;
+        transform: translateX(-260px) !important;
+        padding: 0;
+    }
 }

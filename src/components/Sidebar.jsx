@@ -2,13 +2,17 @@ import { useState, useRef, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import DeleteIcon from '@mui/icons-material/Delete';
-import Button from "@mui/material/Button"
+import Button from "@mui/material/Button";
+import DensityMediumIcon from '@mui/icons-material/DensityMedium';
 import "../styles/Sidebar.css"
 
 function Sidebar({ projects, updateProjects, setCurrentProject }) {
 
     const dialog = useRef(null)
     const input = useRef(null)
+
+    const [sidebar, setSidebar] = useState(false)
+    const [sidebarStyle, setSidebarStyle] = useState({})
 
     const capitalize = (word) => {
         return(word[0].toUpperCase() + word.slice(1))
@@ -26,7 +30,7 @@ function Sidebar({ projects, updateProjects, setCurrentProject }) {
 
     const addProject = (e) => {
         e.preventDefault()
-        updateProjects([...projects, { name: capitalize(input.current.value), tasks: [] }])
+        updateProjects([...projects, { name: capitalize(input.current.value), tasks: []}])
         dialog.current.close()
     }
 
@@ -51,9 +55,21 @@ function Sidebar({ projects, updateProjects, setCurrentProject }) {
         )
     }
 
+    const toggleSidebar = () => {
+        if (window.innerHeight <= 1000 && sidebar){
+            setSidebarStyle({transition: 'translateX(-260px) !important'})
+            setSidebar(true)
+        }
+        else{
+            setSidebarStyle({transition: 'translateX(0px) !important'})
+            setSidebar(false)
+        }
+    }
+
+
     return (
         <>
-            <div id="sidebar">
+            <div id="sidebar" style={sidebarStyle}>
                 <h1>To-Do List</h1>
                 <div id="project-section">
                     <div id="project-heading">
@@ -75,6 +91,7 @@ function Sidebar({ projects, updateProjects, setCurrentProject }) {
                         }
                     </div>
                 </div>
+                <DensityMediumIcon id="sidebar-icon" onClick={toggleSidebar}/>
             </div>
 
             <dialog ref={dialog} id="project-dialog">
@@ -90,6 +107,8 @@ function Sidebar({ projects, updateProjects, setCurrentProject }) {
                     </div>
                 </form>
             </dialog>
+
+            
         </>
     )
 }

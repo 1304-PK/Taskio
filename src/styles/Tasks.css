@@ -1,43 +1,47 @@
-#main-div{
+#main-div {
+    display: flex;
+    flex-direction: column;
     background-color: rgb(59, 59, 59);
     flex: 1;
     color: white;
     padding: 3vmin 2vmin;
 }
 
-#task-section{
+#task-section {
+    flex: 1;
     margin-top: 5vmin;
 }
 
-#tasks{
+#tasks {
+    flex: 1;
     margin-top: 1.5vmin;
 }
 
-#tasks:last-child{
+#tasks:last-child {
     border-bottom: 1px solid rgba(0, 0, 0, 0.736);
 }
 
-.task{
+.task {
     display: flex;
     align-items: center;
     border-top: 1px solid rgba(0, 0, 0, 0.736);
     padding: 1vmin 0vmin;
 }
 
-.task :first-child{
+.task :first-child {
     font-size: 1.1rem;
 }
 
-.task-name-date{
+.task-name-date {
     margin-left: 1vmin;
 }
 
-.task-name-date :last-child{
+.task-name-date :last-child {
     color: rgba(255, 255, 255, 0.673);
     margin-top: 0.2vmin;
 }
 
-#add-task{
+#add-task {
     position: absolute;
     bottom: 5vmin;
     right: 5vmin;
@@ -45,30 +49,30 @@
 
 /* TASK DIALOG */
 
-#task-dialog{
+#task-dialog {
     background-color: rgb(42, 42, 42);
     margin: auto;
     padding: 3vmin;
     border-radius: 10px;
     border: none;
 
-    &::backdrop{
+    &::backdrop {
         background-color: rgba(0, 0, 0, 0.648);
     }
 }
 
-#task-dialog h1{
+#task-dialog h1 {
     color: var(--blue);
     margin-bottom: 3vmin;
 }
 
-#name-input-div{
+#name-input-div {
     display: flex;
     flex-direction: column;
     color: var(--graycolor)
 }
 
-#name-input-div input{
+#name-input-div input {
     font-size: 1rem;
     padding: 1vmin;
     width: 50vmin;
@@ -76,24 +80,25 @@
     border: none;
     margin-top: 0.5vmin;
 
-    &:focus{
+    &:focus {
         outline: none;
     }
 }
 
-#date-project-div{
+#date-project-div {
     display: flex;
     justify-content: space-between;
     color: var(--graycolor);
     margin-top: 4vmin;
 }
 
-#form-date-input, #form-project-input{
+#form-date-input,
+#form-project-input {
     display: flex;
     gap: 1vmin;
 }
 
-#taskform-buttons-div{
+#taskform-buttons-div {
     display: flex;
     justify-content: space-between;
     margin-top: 7vmin;
@@ -110,7 +115,7 @@
     cursor: pointer;
 }
 
-#projects-dropdown{
+#projects-dropdown {
     background-color: #646464;
     border: none;
     border-radius: 5px;
@@ -120,11 +125,12 @@
     cursor: pointer;
 }
 
-#form-date-input, #form-project-input{
+#form-date-input,
+#form-project-input {
     align-items: center;
 }
 
-#empty-projects{
+#empty-projects {
     background-color: rgb(59, 59, 59);
     flex: 1;
     color: white;
@@ -132,4 +138,25 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#empty-task {
+    margin: auto 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-task {
+    color: red;
+    margin-left: auto;
+    margin-right: 3vmin;
+    border-radius: 50%;
+    padding: 0.5vmin;
+    cursor: pointer;
+
+    &:hover {
+        color: white;
+        background-color: red;
+    }
 }
