@@ -77,34 +77,34 @@ function Tasks({ projects, updateProjects, currentProject, setCurrentProject }) 
       <>
         <div id="main-div">
           <h1 id='project-name'>{currentProject.name}</h1>
-          
-            {
-              currentProject.tasks && currentProject.tasks.length > 0 ?
-                <div id="task-section">
-                  <h2>Tasks</h2>
-                  <div id="tasks">
-                    {
-                      currentProject.tasks.map(item => {
-                        return (
-                          <div key={item.name} className='task' onMouseEnter={() => { setDisplay("inline") }} onMouseLeave={() => { setDisplay("none") }}>
-                            <Checkbox {...label} />
-                            <div className='task-name-date'>
-                              <p>{item.name}</p>
-                              <p>{item.date}</p>
-                            </div>
-                            <DeleteIcon className='delete-task' style={{ display: display }} onClick={(e) => { deleteTask(e, item) }} />
+
+          {
+            currentProject.tasks && currentProject.tasks.length > 0 ?
+              <div id="task-section">
+                <h2 id="tasks-heading">Tasks</h2>
+                <div id="tasks">
+                  {
+                    currentProject.tasks.map(item => {
+                      return (
+                        <div key={item.name} className='task' onMouseEnter={() => { setDisplay("inline") }} onMouseLeave={() => { setDisplay("none") }}>
+                          <Checkbox {...label} />
+                          <div className='task-name-date'>
+                            <p>{item.name}</p>
+                            <p>{item.date}</p>
                           </div>
-                        )
-                      })
-                    }
-                  </div>
+                          <DeleteIcon className='delete-task' style={{ display: display }} onClick={(e) => { deleteTask(e, item) }} />
+                        </div>
+                      )
+                    })
+                  }
                 </div>
-                :
-                <div id="empty-task">
-                  <h1>No Tasks</h1>
-                  <h1>Click "<AddIcon />" to add a task</h1>
-                </div>
-            }
+              </div>
+              :
+              <div id="empty-task">
+                <h1>No Tasks</h1>
+                <h1>Click "<AddIcon />" to add a task</h1>
+              </div>
+          }
           <Fab color="primary" aria-label="add" onClick={openTaskDialog} id="add-task">
             <AddIcon />
           </Fab>

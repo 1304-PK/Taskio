@@ -12,10 +12,10 @@ function Sidebar({ projects, updateProjects, setCurrentProject }) {
     const input = useRef(null)
 
     const [sidebar, setSidebar] = useState(false)
-    const [sidebarStyle, setSidebarStyle] = useState({})
+    const [sidebarClass, setSidebarClass] = useState('')
 
     const capitalize = (word) => {
-        return(word[0].toUpperCase() + word.slice(1))
+        return (word[0].toUpperCase() + word.slice(1))
     }
 
     const showDialog = () => {
@@ -30,7 +30,7 @@ function Sidebar({ projects, updateProjects, setCurrentProject }) {
 
     const addProject = (e) => {
         e.preventDefault()
-        updateProjects([...projects, { name: capitalize(input.current.value), tasks: []}])
+        updateProjects([...projects, { name: capitalize(input.current.value), tasks: [] }])
         dialog.current.close()
     }
 
@@ -47,29 +47,39 @@ function Sidebar({ projects, updateProjects, setCurrentProject }) {
 
     const deleteProject = (e, item) => {
         e.stopPropagation()
-        if (projects.length === 1){
+        if (projects.length === 1) {
             setCurrentProject()
-        }        
+        }
         updateProjects(
             projects.filter(i => i.name != item.name)
         )
     }
 
-    const toggleSidebar = () => {
-        if (window.innerHeight <= 1000 && sidebar){
-            setSidebarStyle({transition: 'translateX(-260px) !important'})
-            setSidebar(true)
+    const handleWindowResize = () => {
+        if (window.innerWidth >= 1000) {
+            setSidebarClass('')
         }
-        else{
-            setSidebarStyle({transition: 'translateX(0px) !important'})
-            setSidebar(false)
+        else if (window.innerWidth < 1000) {
+            sidebar ? setSidebarClass('show-sidebar') : setSidebarClass('hide-sidebar')
         }
     }
 
+    useEffect(() => {
+        handleWindowResize()
+        window.addEventListener('resize', handleWindowResize)
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize)
+        }
+    }, [sidebar])
+
+    const toggleSidebar = () => {
+        setSidebar(prev => !prev)
+    }
 
     return (
         <>
-            <div id="sidebar" style={sidebarStyle}>
+            <div id="sidebar" className={sidebarClass}>
                 <h1>To-Do List</h1>
                 <div id="project-section">
                     <div id="project-heading">
@@ -84,14 +94,14 @@ function Sidebar({ projects, updateProjects, setCurrentProject }) {
                                         renderCurrentProject(item)
                                     }}>
                                         {item.name}
-                                        <DeleteIcon className="delete-project" onClick={(e) => {deleteProject(e, item)}}/>
-                                        </button>
+                                        <DeleteIcon className="delete-project" onClick={(e) => { deleteProject(e, item) }} />
+                                    </button>
                                 )
                             })
                         }
                     </div>
                 </div>
-                <DensityMediumIcon id="sidebar-icon" onClick={toggleSidebar}/>
+                <DensityMediumIcon id="sidebar-icon" onClick={toggleSidebar} />
             </div>
 
             <dialog ref={dialog} id="project-dialog">
@@ -99,7 +109,7 @@ function Sidebar({ projects, updateProjects, setCurrentProject }) {
                 <form onSubmit={(e) => addProject(e)}>
                     <div id="input-label-div">
                         <label htmlFor="project-name">Project Name</label>
-                        <input type="text" ref={input} id="project-name" placeholder='Title...' required/>
+                        <input type="text" ref={input} id="project-name" placeholder='Title...' required />
                     </div>
                     <div id="projectform-buttons-div">
                         <Button variant="outlined" color="error" onClick={(e) => { closeDialog(e) }}>Cancel</Button>
@@ -108,7 +118,7 @@ function Sidebar({ projects, updateProjects, setCurrentProject }) {
                 </form>
             </dialog>
 
-            
+
         </>
     )
 }
