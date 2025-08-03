@@ -1,8 +1,4 @@
-:root{
-    --delete-project-display: none
-}
-
-#sidebar{
+#sidebar {
     position: relative;
     background-color: #242526;
     width: 260px;
@@ -11,7 +7,7 @@
     text-align: center;
 }
 
-#project-section{
+#project-section {
     margin-top: 3vmin;
     background-color: #3a3b3c;
     color: #eaeaea;
@@ -19,15 +15,15 @@
     border-radius: 10px;
 }
 
-#project-heading{
+#project-heading {
     display: flex;
     justify-content: space-between;
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
     font-weight: 500;
 }
 
-#project-heading button{
-    font-size: 1.2rem;
+#project-heading button {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
     background-color: transparent;
     border: none;
     color: #eaeaea;
@@ -35,18 +31,18 @@
     padding: 0 0.4vmin;
     border-radius: 50%;
 
-    &:hover{
+    &:hover {
         background-color: #4b4c4d;
     }
 }
 
-#projects{
+#projects {
     display: flex;
     flex-direction: column;
     margin-top: 1vmin;
 }
 
-.project-button{
+.project-button {
     font-size: 1rem;
     padding: 0.3vmin 0.4vmin 0.3vmin 1vmin;
     background-color: transparent;
@@ -60,49 +56,52 @@
     font-weight: 500;
     cursor: pointer;
 
-    &:hover{
+    &:hover {
         background-color: #fff;
         color: #3a3b3c;
 
     }
 }
 
-.delete-project{
+.delete-project {
     color: red;
     padding: 0.5vmin;
     border-radius: 50%;
 
-    &:hover{
+    &:hover {
         background-color: red;
         color: white;
     }
 
 }
 
-#project-dialog{
+/* DIALOG */
+
+#project-dialog {
     background-color: rgb(42, 42, 42);
     margin: auto;
     padding: 3vmin;
     border-radius: 10px;
     border: none;
 
-    &::backdrop{
+    &::backdrop {
         background-color: rgba(0, 0, 0, 0.648);
     }
 }
 
-#project-dialog h1{
+#project-dialog h1 {
     color: var(--blue);
     margin-bottom: 3vmin;
+    font-size: clamp(1.5rem, 2vw, 2rem);
 }
 
-#input-label-div{
+#input-label-div {
     display: flex;
     flex-direction: column;
     color: var(--graycolor);
 }
 
-#input-label-div input{
+#input-label-div input {
     font-size: 1rem;
     padding: 1vmin;
     width: 50vmin;
@@ -110,37 +109,44 @@
     border: none;
     margin-top: 0.5vmin;
 
-    &:focus{
+    &:focus {
         outline: none;
     }
 }
 
-#projectform-buttons-div{
+#projectform-buttons-div {
     margin-top: 5vmin;
     display: flex;
     justify-content: space-between;
     padding: 0vmin 6vmin;
 }
 
-#sidebar-icon{
+#sidebar-icon {
     display: none;
     position: absolute;
     color: white;
-    top: 1vmin;
-    right: -30px;
+    top: 5px;
+    right: -25px;
+    font-size: 1.3rem;
 }
 
-@media (max-width: 1000px){
+.show-sidebar {
+    position: absolute !important;
+    min-height: 100vh;
+    z-index: 10;
+}
 
-    #sidebar-icon{
+.hide-sidebar {
+    position: absolute !important;
+    min-height: 100vh !important;
+    transform: translateX(-260px) !important;
+    padding: 0 !important;
+}
+
+@media (max-width: 1000px) {
+
+    #sidebar-icon {
         display: block;
         cursor: pointer;
-    }
-
-    #sidebar{
-        position: fixed;
-        min-height: 100vh;
-        transform: translateX(-260px) !important;
-        padding: 0;
     }
 }
