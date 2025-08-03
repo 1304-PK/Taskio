@@ -80,7 +80,7 @@ function Sidebar({ projects, updateProjects, setCurrentProject }) {
     return (
         <>
             <div id="sidebar" className={sidebarClass}>
-                <h1>To-Do List</h1>
+                <h1 id="to-do-heading">To-Do List</h1>
                 <div id="project-section">
                     <div id="project-heading">
                         <p>Projects</p>
